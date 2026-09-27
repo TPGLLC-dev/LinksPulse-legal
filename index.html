@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--
+  DRAFT for review, 2026-09-24. Not published. The LinksPulse landing page, the
+  root of the GitHub Pages site that also holds privacy.html, terms.html and
+  support.html (the privacy policy moved off the root to make room for this).
+
+  ⚠️ EVERY CLAIM HERE DESCRIBES THE APP AS IT IS, checked 2026-09-24:
+    - 18 courses (app/src/data/courses.ts); Bay Hill and Reunion are
+      guest-only, hidden unless the user is staying there.
+    - Weather: Open-Meteo hourly across the whole round + NWS alerts.
+    - Drive: TomTom via the linkspulse-routing Worker, live today, usual
+      traffic for a later day; location rounded to ~100 m.
+    - NO live tee times. Say "coming" only once a partner has said yes.
+  Update this page in the same change as any of those.
+
+  ⚠️ SCREENSHOT CREDITS ARE A LICENCE OBLIGATION. screen-results.jpg shows the
+  Grand Cypress and Hawk's Landing photos (CC BY-SA 3.0, Bernard Gagnon), and
+  hero.jpg is the Welcome still (CC0 base). Re-shoot the screenshots and the
+  credit line below must be re-checked against what they show.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinksPulse</title>
+  <meta name="description" content="LinksPulse ranks Orlando-area golf courses for the day you want to play, by the weather across your whole round, the real drive and what matters to you, and tells you why." />
+  <link rel="icon" type="image/png" href="img/icon.png" />
+  <meta property="og:title" content="LinksPulse: where to play, and why" />
+  <meta property="og:description" content="Orlando golf, ranked for your day: weather across your whole round, real drive times, and the reasons." />
+  <meta property="og:image" content="img/screen-results.jpg" />
+  <style>
+    :root {
+      --green: #1f6f43; --mint: #7fd6a2; --deep: #0f1719; --card: #18242a;
+      --ink: #12232b; --body: #374151; --muted: #5b7280; --line: #e5e7eb;
+      --bg: #ffffff; --soft: #f4f8f5;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --ink: #eaf2f4; --body: #c9d6da; --muted: #9fb2b8; --line: #26363d;
+        --bg: #0f1719; --soft: #162126; --green: #7fd6a2;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--body);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--green); }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+    /* Hero: the Welcome screen's own photo, darkened so white type holds. */
+    .hero {
+      background: linear-gradient(180deg, rgba(15,23,25,.55) 0%, rgba(15,23,25,.82) 70%, #0f1719 100%),
+                  url('img/hero.jpg') center 38% / cover no-repeat;
+      color: #fff; padding: 20px 0 64px;
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none;
+             font-weight: 900; font-size: 1.25rem; letter-spacing: -.01em; }
+    .brand img { width: 36px; height: 36px; border-radius: 9px; }
+    nav .links a { color: #e8f3ec; text-decoration: none; font-size: .9rem; margin-left: 16px; }
+    nav .links a:hover { text-decoration: underline; }
+    nav .links { white-space: nowrap; }
+    @media (max-width: 420px) { nav .links a { margin-left: 12px; font-size: .85rem; } }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.08; margin: 56px 0 14px;
+               color: #fff; letter-spacing: -.02em; max-width: 18ch; }
+    .hero p.lede { font-size: clamp(1.05rem, 2.4vw, 1.25rem); color: #dfe9e4; max-width: 38em; margin: 0; }
+    .pill { display: inline-block; margin-top: 26px; padding: 10px 18px; border-radius: 999px;
+            background: var(--mint); color: #0b2a19; font-weight: 800; font-size: .95rem; }
+    .where { margin-top: 12px; color: #b9cbc2; font-size: .9rem; }
+
+    section { padding: 56px 0; }
+    h2 { color: var(--ink); font-size: clamp(1.5rem, 3.4vw, 2rem); letter-spacing: -.01em; margin: 0 0 8px; }
+    .sub { color: var(--muted); margin: 0 0 28px; max-width: 42em; }
+
+    /* Three phones in a row; on a phone they stack. */
+    .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .shot { margin: 0; }
+    .shot img { width: 100%; height: auto; display: block; border-radius: 26px;
+                box-shadow: 0 10px 30px rgba(0,0,0,.18); background: var(--deep); }
+    .shot figcaption { margin-top: 12px; }
+    .shot b { display: block; color: var(--ink); font-size: 1.02rem; }
+    .shot span { color: var(--muted); font-size: .92rem; }
+    @media (max-width: 760px) {
+      .shots { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
+    }
+
+    .band { background: var(--soft); }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .card { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+    .card h3 { margin: 0 0 6px; color: var(--ink); font-size: 1.05rem; }
+    .card p { margin: 0; font-size: .95rem; }
+
+    .courses { columns: 2; column-gap: 32px; padding: 0; margin: 0; list-style: none; }
+    @media (max-width: 600px) { .courses { columns: 1; } }
+    .courses li { break-inside: avoid; padding: 6px 0; border-bottom: 1px solid var(--line); }
+    .courses li small { color: var(--muted); }
+    .area { color: var(--ink); font-weight: 800; margin: 18px 0 6px; font-size: .95rem; }
+
+    .honest { border-left: 4px solid var(--green); padding: 4px 0 4px 16px; max-width: 46em; }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0 44px; font-size: .85rem; color: var(--muted); }
+    footer .links a { margin-right: 16px; }
+    footer p { margin: 8px 0; }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="./"><img src="img/icon.png" alt="" />LinksPulse</a>
+        <div class="links">
+          <a href="support.html">Support</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </nav>
+      <h1>Where to play, and why.</h1>
+      <p class="lede">
+        LinksPulse ranks Orlando-area golf courses for the day you want to play: by the weather across
+        your whole round, the real drive from where you're staying, price and what matters to you.
+        Then it tells you why.
+      </p>
+      <span class="pill">Coming soon to iPhone</span>
+      <p class="where">18 courses across Orlando, Disney and Kissimmee.</p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h2>Tell it your day. Get an answer.</h2>
+        <p class="sub">
+          Not another course directory. Pick where you're staying, the day, your group and your budget,
+          and LinksPulse picks a course, and shows its work.
+        </p>
+        <div class="shots">
+          <figure class="shot">
+            <img src="img/screen-find.jpg" width="552" height="1200" loading="lazy"
+                 alt="The Find screen: staying near Disney area, tomorrow, best tee time, four players, any price." />
+            <figcaption><b>Your plan in a few taps</b><span>Where you're staying, the day, tee time, players, budget and what you'd like.</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="img/screen-results.jpg" width="552" height="1200" loading="lazy"
+                 alt="Results: 14 courses for tomorrow, with Disney's Magnolia as our pick, about 8 minutes' drive, best at 8 AM, dry." />
+            <figcaption><b>A pick, and the reasons</b><span>Every course ranked, with the drive and the weather on each row. When it's too close to call, it says so.</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="img/screen-detail.jpg" width="552" height="1200" loading="lazy"
+                 alt="A course screen: excellent match, about 8 minutes' drive, best tee time 8 AM, and the weather hour by hour." />
+            <figcaption><b>Your round, hour by hour</b><span>The best tee time for the day, and the conditions for every hour you'd be out there.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>What goes into the ranking</h2>
+        <p class="sub">Each course gets a match for your plan, and every part of it is shown.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Weather across the whole round</h3>
+            <p>Not today's high: the hourly forecast for the four-plus hours you'd actually be playing, including
+               heat, rain and wind, plus any National Weather Service alerts.</p>
+          </div>
+          <div class="card">
+            <h3>The real drive</h3>
+            <p>Drive times with traffic from where you're staying: live traffic for today, usual traffic for the
+               time you'd leave on another day. Running slower than usual? It tells you.</p>
+          </div>
+          <div class="card">
+            <h3>Price and fit</h3>
+            <p>Your budget, and what you're after: walkable, a quick nine, a bucket-list course or something
+               friendly for a beginner.</p>
+          </div>
+          <div class="card">
+            <h3>Only courses you can actually play</h3>
+            <p>Some courses take only their own resort's guests. LinksPulse hides those unless you're staying
+               there, and warns you when a date is too far out to book.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>The courses</h2>
+        <p class="sub">A curated list for visitors, checked against each course's own published information.</p>
+        <p class="area">Orlando</p>
+        <ul class="courses">
+          <li>Dubsdread Golf Course</li>
+          <li>Winter Park Golf Course (WP9)</li>
+          <li>Orange County National</li>
+          <li>Shingle Creek Golf Club</li>
+          <li>The Ritz-Carlton Golf Club, Grande Lakes</li>
+          <li>Grande Vista Golf Club</li>
+          <li>Hunter's Creek Golf Club</li>
+          <li>Arnold Palmer's Bay Hill Club &amp; Lodge <small>· Lodge guests and members</small></li>
+        </ul>
+        <p class="area">Disney &amp; Kissimmee</p>
+        <ul class="courses">
+          <li>Disney's Magnolia Golf Course</li>
+          <li>Disney's Oak Trail Golf Course</li>
+          <li>Falcon's Fire Golf Club</li>
+          <li>Waldorf Astoria Golf Club</li>
+          <li>Grand Cypress Golf (Evermore Resort)</li>
+          <li>ChampionsGate Golf Club (Omni)</li>
+          <li>The Legends Walk at Orange Lake</li>
+          <li>Celebration Golf Club</li>
+          <li>Hawk's Landing Golf Club (Marriott World Center)</li>
+          <li>Reunion Resort <small>· Resort guests</small></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>Honest about what it can't see</h2>
+        <div class="honest">
+          <p>
+            LinksPulse doesn't show live tee times yet. When it picks a course, it sends you to that course's own
+            booking page to choose a time. It never guesses at availability, and it labels anything it doesn't
+            know rather than scoring around it.
+          </p>
+          <p>
+            No account. Your location is optional; if you share it, it is rounded to about 100 meters and used
+            only to work out drive times. See the <a href="privacy.html">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="links">
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="mailto:TPGLLC.Support@gmail.com">TPGLLC.Support@gmail.com</a>
+      </p>
+      <p>&copy; 2026 The Penelope Group LLC. LinksPulse is independent and is not affiliated with, or endorsed by,
+         any golf course listed here.</p>
+      <p>
+        Photos in the screenshots: Grand Cypress East course, 5th hole, and Hawk's Landing, 18th hole, by Bernard
+        Gagnon, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons.
+        Course aerials: USDA National Agriculture Imagery Program (public domain). Header photo based on
+        &ldquo;Golf ball with tee&rdquo; by HeungSoon (<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>).
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

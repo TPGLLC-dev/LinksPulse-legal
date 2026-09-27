@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!--
+  DRAFT for review, 2026-09-24. Not published. Modeled on BeachPulse's privacy
+  policy (DisneyWait legal/beachpulse/index.html @ f8983be).
+
+  ⚠️ EVERY CLAIM HERE WAS CHECKED AGAINST THE APP. Update this page in the
+  SAME release as any of these:
+    - Real drive times SHIPPED 2026-09-24: the starting position leaves the
+      phone, rounded to ~111 m, to the linkspulse-routing Worker (Cloudflare),
+      which asks TomTom. Checked against worker/src/index.ts: POST body only,
+      rounded on arrival, no identifier, cached up to 1 hour per rounded origin
+      and departure. The app's own copy (Onboarding, Settings, You, FAQ) says
+      the same; see app/src/ui/location.ts. If the Worker ever logs bodies,
+      keeps longer, or adds an identifier, this page and that copy change first.
+    - Pro ($4.99 non-consumable, decided 2026-09-24) is ALREADY described in
+      section 3 (RevenueCat row) and section 4. Check both against the SDK's
+      real behavior when react-native-purchases is wired, before release.
+    - Tee-time partner inventory (GolfNow, Lightspeed, TeeOff): whatever the
+      partner receives goes in section 3.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinksPulse – Privacy Policy</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+    h1 { font-size: 1.8rem; color: #111827; margin-bottom: 4px; }
+    h2 { font-size: 1.1rem; color: #111827; margin-top: 32px; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; }
+    p, li { color: #374151; font-size: 0.95rem; }
+    ul { padding-left: 20px; }
+    a { color: #1f6f43; }
+    .meta { color: #6b7280; font-size: 0.875rem; margin-bottom: 28px; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+    th, td { border: 1px solid #e5e7eb; padding: 8px 10px; text-align: left; font-size: 0.9rem; }
+    th { background: #f9fafb; }
+    .callout { background: #eef6f0; border-left: 4px solid #1f6f43; padding: 12px 16px; margin: 18px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>LinksPulse &mdash; Privacy Policy</h1>
+  <p class="meta">
+    <strong>Effective Date:</strong> September 24, 2026 &nbsp;&bull;&nbsp;
+    <strong>Last Updated:</strong> September 24, 2026
+  </p>
+
+  <p>
+    This Privacy Policy describes how The Penelope Group LLC ("we," "us," or "our") handles information in
+    LinksPulse ("the App"). LinksPulse recommends which Central Florida golf course to play, given where you are
+    starting from, when you want to play, and what matters to you.
+  </p>
+
+  <div class="callout">
+    <p style="margin:0">
+      <strong>The short version.</strong> LinksPulse has no accounts. We do not know who you are, and we keep
+      no record of your use of the App. To show real drive times, the App sends your starting point, rounded to
+      about 100 meters and with nothing that identifies you, to our routing service, which asks TomTom for the
+      drive times and keeps that rounded point for at most an hour. If you buy Pro, Apple handles the
+      payment and our purchase provider records that a random, anonymous ID bought it; neither is linked to your
+      name or email.
+    </p>
+  </div>
+
+  <h2>1. Information We Collect</h2>
+
+  <p>
+    <strong>We collect nothing about who you are.</strong> We operate no account system and no database. The one
+    service we run, for drive times, receives a rounded starting point and nothing else about you (Section 3). There is no sign-up, no email address, no username and no password. We have no way to
+    contact you, no way to identify your device, and no profile of you to build, sell or lose.
+  </p>
+
+  <p>
+    The App does handle a small amount of information locally on your device, described below. What leaves
+    your device is a rounded starting point for drive times and, if you make one, a record of a Pro purchase
+    (Section 3).
+  </p>
+
+  <h2>2. Location</h2>
+
+  <p>
+    <strong>Location is optional.</strong> The App works fully without it: instead of your device's position you
+    can choose a starting area from a list (for example, the Disney area), and every feature behaves the same
+    way.
+  </p>
+
+  <p>If you do choose to start from your current location:</p>
+
+  <ul>
+    <li>
+      <strong>Foreground only.</strong> The App requests "While Using the App" permission. It does not request,
+      and cannot obtain, background location.
+    </li>
+    <li>
+      <strong>One reading, on request.</strong> A single position is read at the moment you choose "My location."
+      The App does not follow your position, does not use geofencing, and does not run when it is closed.
+    </li>
+    <li>
+      <strong>Rounded before it leaves.</strong> To work out drive times, the position is rounded to about 100
+      meters and sent to our routing service, which asks TomTom for the routes. It is sent with nothing that
+      identifies you or your device, the service keeps the rounded point for at most an hour (so the next search
+      from the same spot is quick), and no record of where you have been is kept, on the device or anywhere else.
+    </li>
+  </ul>
+
+  <p>
+    <strong>Typing a starting place</strong> (a hotel, street address or town) is the other way to set where you
+    start. What you type is sent to Apple's map search, which returns its location. If Apple's search is
+    unavailable or finds nothing, the text goes to our routing service instead, which looks it up with TomTom.
+    The place it finds is then used exactly like a current location, above. What you typed is not saved after
+    you close the App.
+  </p>
+
+  <p>
+    The same applies when you pick one of the preset starting areas, although those are fixed points built into
+    the App and say nothing about you.
+  </p>
+
+  <h2>3. What Leaves Your Device, and Where It Goes</h2>
+
+  <p>
+    <strong>Only the routing service ever receives anything about you</strong>, and only a rounded starting
+    point. The weather and alert services are asked about the courses, never about you.
+  </p>
+
+  <table>
+    <tr><th>Service</th><th>Operated by</th><th>What it receives</th></tr>
+    <tr>
+      <td>Open-Meteo (weather forecast)</td>
+      <td>Open-Meteo</td>
+      <td>Only the fixed coordinates of the golf courses, which are built into the App</td>
+    </tr>
+    <tr>
+      <td>National Weather Service (weather alerts)</td>
+      <td>U.S. National Weather Service</td>
+      <td>Only the fixed coordinates of the golf courses, which are built into the App</td>
+    </tr>
+    <tr>
+      <td>LinksPulse routing service, which passes the request to TomTom (drive times and place lookup)</td>
+      <td>The Penelope Group LLC, hosted by Cloudflare, Inc.; routes by TomTom International B.V.</td>
+      <td><strong>Your starting point, rounded to about 100 meters</strong>, or the place you typed if Apple's
+          search could not find it, plus the fixed course coordinates. Nothing that identifies you or your
+          device. The rounded point is cached for at most an hour.</td>
+    </tr>
+    <tr>
+      <td>Apple map search (only if you type a starting place)</td>
+      <td>Apple</td>
+      <td>The text you typed, to look up its location</td>
+    </tr>
+    <tr>
+      <td>RevenueCat (Pro purchase records)</td>
+      <td>RevenueCat, Inc.</td>
+      <td>A random, anonymous ID created by the App, your purchase history for LinksPulse from Apple, and basic
+          device details (such as iOS version, App version and storefront country). Never your name, email,
+          location or payment details. Used only to know whether Pro is unlocked.</td>
+    </tr>
+  </table>
+
+  <p>
+    These services receive your device's IP address as an unavoidable consequence of your device making a network
+    request, exactly as any website you visit would. We do not control what they do with it; their own privacy
+    policies apply:
+    <a href="https://open-meteo.com/en/terms">Open-Meteo</a>,
+    <a href="https://www.weather.gov/privacy">National Weather Service</a>,
+    <a href="https://www.revenuecat.com/privacy">RevenueCat</a>,
+    <a href="https://www.tomtom.com/privacy/">TomTom</a>,
+    <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a>.
+  </p>
+
+  <p>
+    <strong>Payments.</strong> If you buy LinksPulse Pro, Apple processes the payment under your Apple ID and
+    <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. We never see your card or payment
+    details, and we cannot connect a purchase to your name or email.
+  </p>
+
+  <p>A few actions hand you over to someone else, and only when you take them:</p>
+
+  <ul>
+    <li>
+      <strong>The Map tab</strong> displays Apple's map. Apple serves the map for the area on screen, under
+      <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. The App does not show your own
+      position on that map.
+    </li>
+    <li>
+      <strong>Directions</strong> hand the course's location to Apple Maps.
+    </li>
+    <li>
+      <strong>Booking and course links</strong> open the course's own website or its booking provider (for
+      example, a course's tee-time page) in your browser. We do not book tee times and receive nothing back.
+      Anything you enter there, including payment details, goes to that site under its terms and privacy policy,
+      not ours.
+    </li>
+    <li>
+      <strong>Emailing support</strong> opens your own mail app. If you send the email, we receive what you
+      choose to write, and use it only to answer you.
+    </li>
+  </ul>
+
+  <h2>4. What Is Stored on Your Device</h2>
+
+  <p>The App saves a small amount of data in its own private storage on your phone:</p>
+
+  <ul>
+    <li>Your appearance setting (light, dark or system).</li>
+    <li>A flag recording that you have seen the introduction, so it is not shown twice.</li>
+    <li>If you buy Pro, the anonymous purchase ID and a cached copy of whether Pro is unlocked, kept by our
+        purchase provider's library.</li>
+  </ul>
+
+  <p>
+    Your plan (the day, starting area, party size, budget and the other choices on the Find screen) is held only
+    while the App is open and is not saved. None of this is transmitted anywhere. It is readable only by the App,
+    and <strong>deleting the App deletes all of it</strong>. That is the complete data deletion procedure; there
+    is nothing on our side to request the deletion of.
+  </p>
+
+  <h2>5. What We Do Not Do</h2>
+
+  <ul>
+    <li><strong>No advertising.</strong> The App contains no ads and no advertising SDK.</li>
+    <li><strong>No analytics.</strong> There is no analytics or attribution SDK of any kind, from us or anyone else.</li>
+    <li><strong>No tracking.</strong> We do not collect the Identifier for Advertisers (IDFA) and do not track you
+        across other companies' apps or websites. No App Tracking Transparency prompt appears because there is
+        nothing to ask you to permit.</li>
+    <li><strong>No crash or usage reporting.</strong> Nothing reports back to us when the App is used or fails.</li>
+    <li><strong>No sale or sharing of personal information.</strong> We do not sell or share information for
+        advertising. The anonymous purchase record above is used only to unlock Pro.</li>
+    <li><strong>No referral tracking.</strong> Opening a course's booking page does not tell us, or earn us
+        anything.</li>
+    <li><strong>No profiling and no automated decisions about you.</strong> The App ranks golf courses, not people.</li>
+  </ul>
+
+  <h2>6. Children's Privacy</h2>
+
+  <p>
+    LinksPulse is not directed to children under 13 and we do not knowingly collect personal information from
+    anyone. Because the App has no accounts and collects nothing, there is no children's data for us to hold or
+    delete. A parent with questions is welcome to contact us at the address below.
+  </p>
+
+  <h2>7. Your Rights</h2>
+
+  <p>
+    Privacy laws including the California Consumer Privacy Act (CCPA) and the EU/UK General Data Protection
+    Regulation (GDPR) give you rights to access, correct, delete and port the personal information a company
+    holds about you, and to object to its processing.
+  </p>
+
+  <p>
+    <strong>We hold no personal information about you</strong>, so there is nothing for us to produce, correct,
+    export or erase. A Pro purchase record is tied only to a random ID we cannot connect to you; if you want it
+    removed, email us and we will ask you for the details needed to find it. Everything the App keeps is on your own device and under your own control, and uninstalling
+    the App removes it. If you believe we hold information about you, write to us and we will tell you plainly
+    what we find.
+  </p>
+
+  <h2>8. Security</h2>
+
+  <p>
+    All network requests the App makes use encrypted HTTPS connections. Because we store nothing, the usual risk
+    of a breach exposing your data does not apply here &mdash; there is no store of user data to breach.
+  </p>
+
+  <h2>9. Changes to This Policy</h2>
+
+  <p>
+    If the App gains a feature that changes any of the above &mdash; real driving times, live tee-time
+    availability from a booking partner, a purchase, or anything that sends information to a server of ours or
+    anyone else's &mdash; this policy will be updated <strong>before</strong> that version is released, the "Last
+    Updated" date will change, and the change will be described here rather than silently absorbed.
+  </p>
+
+  <h2>10. Contact Us</h2>
+
+  <p>
+    Questions about this policy or about privacy in LinksPulse:<br />
+    <a href="mailto:TPGLLC.Support@gmail.com">TPGLLC.Support@gmail.com</a><br />
+    The Penelope Group LLC
+  </p>
+
+  <p class="meta">
+    See also our <a href="terms.html">Terms of Use</a> and <a href="support.html">Support page</a>.
+    LinksPulse is independent and is not affiliated with, endorsed by, or sponsored by any golf course, resort,
+    club or booking service it describes, or by the National Weather Service.
+  </p>
+
+</body>
+</html>
