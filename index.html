@@ -1,33 +1,12 @@
 <!DOCTYPE html>
-<!--
-  DRAFT for review, 2026-09-24. Not published. The LinksPulse landing page, the
-  root of the GitHub Pages site that also holds privacy.html, terms.html and
-  support.html (the privacy policy moved off the root to make room for this).
-
-  ⚠️ EVERY CLAIM HERE DESCRIBES THE APP AS IT IS, checked 2026-09-24:
-    - 18 courses (app/src/data/courses.ts); Bay Hill and Reunion are
-      guest-only, hidden unless the user is staying there.
-    - Weather: Open-Meteo hourly across the whole round + NWS alerts.
-    - Drive: TomTom via the linkspulse-routing Worker, live today, usual
-      traffic for a later day; location rounded to ~100 m.
-    - NO live tee times. Say "coming" only once a partner has said yes.
-  Update this page in the same change as any of those.
-
-  ⚠️ SCREENSHOT CREDITS ARE A LICENCE OBLIGATION. screen-results.jpg shows the
-  Grand Cypress and Hawk's Landing photos (CC BY-SA 3.0, Bernard Gagnon), and
-  hero.jpg is the Welcome still (CC0 base). Re-shoot the screenshots and the
-  credit line below must be re-checked against what they show.
--->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LinksPulse</title>
   <meta name="description" content="LinksPulse ranks Orlando-area golf courses for the day you want to play, by the weather across your whole round, the real drive and what matters to you, and tells you why." />
-  <link rel="icon" type="image/png" href="img/icon.png" />
   <meta property="og:title" content="LinksPulse: where to play, and why" />
   <meta property="og:description" content="Orlando golf, ranked for your day: weather across your whole round, real drive times, and the reasons." />
-  <meta property="og:image" content="img/screen-results.jpg" />
   <style>
     :root {
       --green: #1f6f43; --mint: #7fd6a2; --deep: #0f1719; --card: #18242a;
@@ -49,10 +28,8 @@
     a { color: var(--green); }
     .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
 
-    /* Hero: the Welcome screen's own photo, darkened so white type holds. */
     .hero {
-      background: linear-gradient(180deg, rgba(15,23,25,.55) 0%, rgba(15,23,25,.82) 70%, #0f1719 100%),
-                  url('img/hero.jpg') center 38% / cover no-repeat;
+      background: linear-gradient(180deg, #1f6f43 0%, #0f1719 100%);
       color: #fff; padding: 20px 0 64px;
     }
     nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -76,10 +53,10 @@
 
     /* Three phones in a row; on a phone they stack. */
     .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .shot { margin: 0; }
+    .shot { margin: 0; background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
     .shot img { width: 100%; height: auto; display: block; border-radius: 26px;
                 box-shadow: 0 10px 30px rgba(0,0,0,.18); background: var(--deep); }
-    .shot figcaption { margin-top: 12px; }
+    .shot figcaption { margin: 0; }
     .shot b { display: block; color: var(--ink); font-size: 1.02rem; }
     .shot span { color: var(--muted); font-size: .92rem; }
     @media (max-width: 760px) {
@@ -111,7 +88,7 @@
   <header class="hero">
     <div class="wrap">
       <nav>
-        <a class="brand" href="./"><img src="img/icon.png" alt="" />LinksPulse</a>
+        <a class="brand" href="./">LinksPulse</a>
         <div class="links">
           <a href="support.html">Support</a>
           <a href="privacy.html">Privacy</a>
@@ -139,18 +116,12 @@
         </p>
         <div class="shots">
           <figure class="shot">
-            <img src="img/screen-find.jpg" width="552" height="1200" loading="lazy"
-                 alt="The Find screen: staying near Disney area, tomorrow, best tee time, four players, any price." />
             <figcaption><b>Your plan in a few taps</b><span>Where you're staying, the day, tee time, players, budget and what you'd like.</span></figcaption>
           </figure>
           <figure class="shot">
-            <img src="img/screen-results.jpg" width="552" height="1200" loading="lazy"
-                 alt="Results: 14 courses for tomorrow, with Disney's Magnolia as our pick, about 8 minutes' drive, best at 8 AM, dry." />
             <figcaption><b>A pick, and the reasons</b><span>Every course ranked, with the drive and the weather on each row. When it's too close to call, it says so.</span></figcaption>
           </figure>
           <figure class="shot">
-            <img src="img/screen-detail.jpg" width="552" height="1200" loading="lazy"
-                 alt="A course screen: excellent match, about 8 minutes' drive, best tee time 8 AM, and the weather hour by hour." />
             <figcaption><b>Your round, hour by hour</b><span>The best tee time for the day, and the conditions for every hour you'd be out there.</span></figcaption>
           </figure>
         </div>
@@ -245,12 +216,6 @@
       </p>
       <p>&copy; 2026 The Penelope Group LLC. LinksPulse is independent and is not affiliated with, or endorsed by,
          any golf course listed here.</p>
-      <p>
-        Photos in the screenshots: Grand Cypress East course, 5th hole, and Hawk's Landing, 18th hole, by Bernard
-        Gagnon, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons.
-        Course aerials: USDA National Agriculture Imagery Program (public domain). Header photo based on
-        &ldquo;Golf ball with tee&rdquo; by HeungSoon (<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>).
-      </p>
     </div>
   </footer>
 

@@ -1,23 +1,4 @@
 <!DOCTYPE html>
-<!--
-  DRAFT for review, 2026-09-24. Not published. Modeled on BeachPulse's privacy
-  policy (DisneyWait legal/beachpulse/index.html @ f8983be).
-
-  ⚠️ EVERY CLAIM HERE WAS CHECKED AGAINST THE APP. Update this page in the
-  SAME release as any of these:
-    - Real drive times SHIPPED 2026-09-24: the starting position leaves the
-      phone, rounded to ~111 m, to the linkspulse-routing Worker (Cloudflare),
-      which asks TomTom. Checked against worker/src/index.ts: POST body only,
-      rounded on arrival, no identifier, cached up to 1 hour per rounded origin
-      and departure. The app's own copy (Onboarding, Settings, You, FAQ) says
-      the same; see app/src/ui/location.ts. If the Worker ever logs bodies,
-      keeps longer, or adds an identifier, this page and that copy change first.
-    - Pro ($4.99 non-consumable, decided 2026-09-24) is ALREADY described in
-      section 3 (RevenueCat row) and section 4. Check both against the SDK's
-      real behavior when react-native-purchases is wired, before release.
-    - Tee-time partner inventory (GolfNow, Lightspeed, TeeOff): whatever the
-      partner receives goes in section 3.
--->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -49,7 +30,7 @@
   <h1>LinksPulse &mdash; Privacy Policy</h1>
   <p class="meta">
     <strong>Effective Date:</strong> September 24, 2026 &nbsp;&bull;&nbsp;
-    <strong>Last Updated:</strong> September 24, 2026
+    <strong>Last Updated:</strong> September 27, 2026
   </p>
 
   <p>
@@ -271,9 +252,8 @@
   <h2>9. Changes to This Policy</h2>
 
   <p>
-    If the App gains a feature that changes any of the above &mdash; real driving times, live tee-time
-    availability from a booking partner, a purchase, or anything that sends information to a server of ours or
-    anyone else's &mdash; this policy will be updated <strong>before</strong> that version is released, the "Last
+    If the App gains a feature that changes any of the above &mdash; live tee-time availability from a booking
+    partner, or anything else that sends information to a server of ours or anyone else's &mdash; this policy will be updated <strong>before</strong> that version is released, the "Last
     Updated" date will change, and the change will be described here rather than silently absorbed.
   </p>
 
