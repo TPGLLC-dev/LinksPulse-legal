@@ -1,4 +1,26 @@
 <!DOCTYPE html>
+<!--
+  Reviewed against the app 2026-09-27. Modeled on BeachPulse's privacy
+  policy (DisneyWait legal/beachpulse/index.html @ f8983be).
+
+  ⚠️ EVERY CLAIM HERE WAS CHECKED AGAINST THE APP. Update this page in the
+  SAME release as any of these:
+    - Real drive times SHIPPED 2026-09-24: the starting position leaves the
+      phone, rounded to ~111 m, to the linkspulse-routing Worker (Cloudflare),
+      which asks TomTom. Checked against worker/src/index.ts: POST body only,
+      rounded on arrival, no identifier, cached up to 1 hour per rounded origin
+      and departure. The app's own copy (Onboarding, Settings, You, FAQ) says
+      the same; see app/src/ui/location.ts. If the Worker ever logs bodies,
+      keeps longer, or adds an identifier, this page and that copy change first.
+    - Pro ($6.99 non-consumable). Checked against app/src/pro.tsx on
+      2026-09-30: Purchases.configure() runs at EVERY launch, so every user
+      gets an anonymous RevenueCat ID and it is sent to fetch the offering
+      and customer info, buyer or not. No logIn, no attributes, no
+      collectDeviceIdentifiers. If any of those is ever added, section 3
+      changes first.
+    - Tee-time partner inventory (GolfNow, Lightspeed, TeeOff): whatever the
+      partner receives goes in section 3.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -30,7 +52,7 @@
   <h1>LinksPulse &mdash; Privacy Policy</h1>
   <p class="meta">
     <strong>Effective Date:</strong> September 24, 2026 &nbsp;&bull;&nbsp;
-    <strong>Last Updated:</strong> September 27, 2026
+    <strong>Last Updated:</strong> October 7, 2026
   </p>
 
   <p>
@@ -44,9 +66,10 @@
       <strong>The short version.</strong> LinksPulse has no accounts. We do not know who you are, and we keep
       no record of your use of the App. To show real drive times, the App sends your starting point, rounded to
       about 100 meters and with nothing that identifies you, to our routing service, which asks TomTom for the
-      drive times and keeps that rounded point for at most an hour. If you buy Pro, Apple handles the
-      payment and our purchase provider records that a random, anonymous ID bought it; neither is linked to your
-      name or email.
+      drive times and keeps that rounded point for at most an hour. To show Pro's price and whether Pro is
+      unlocked, the App checks with our purchase provider using a random, anonymous ID it creates on your
+      phone, along with your device's app identifier. If you buy Pro, Apple handles the payment and that anonymous ID is recorded as having bought it;
+      none of this is linked to your name or email.
     </p>
   </div>
 
@@ -55,7 +78,9 @@
   <p>
     <strong>We collect nothing about who you are.</strong> We operate no account system and no database. The one
     service we run, for drive times, receives a rounded starting point and nothing else about you (Section 3). There is no sign-up, no email address, no username and no password. We have no way to
-    contact you, no way to identify your device, and no profile of you to build, sell or lose.
+    contact you and no profile of you to build, sell or lose. The one exception is a purchase record: so the App
+    can show and recognize Pro, our purchase provider receives an anonymous ID and your device's app identifier
+    (Section 3).
   </p>
 
   <p>
@@ -95,8 +120,9 @@
     <strong>Typing a starting place</strong> (a hotel, street address or town) is the other way to set where you
     start. What you type is sent to Apple's map search, which returns its location. If Apple's search is
     unavailable or finds nothing, the text goes to our routing service instead, which looks it up with TomTom.
-    The place it finds is then used exactly like a current location, above. What you typed is not saved after
-    you close the App.
+    The place it finds is then used exactly like a current location, above. The App keeps the place it found
+    (its name and position) on your phone as part of your saved plan, below, so it does not have to look it up
+    again; the text you typed is not kept.
   </p>
 
   <p>
@@ -138,9 +164,10 @@
     <tr>
       <td>RevenueCat (Pro purchase records)</td>
       <td>RevenueCat, Inc.</td>
-      <td>A random, anonymous ID created by the App, your purchase history for LinksPulse from Apple, and basic
-          device details (such as iOS version, App version and storefront country). Never your name, email,
-          location or payment details. Used only to know whether Pro is unlocked.</td>
+      <td>A random, anonymous ID created by the App, your device's identifier for our apps (Apple's Identifier
+          for Vendor, IDFV), your purchase history for LinksPulse from Apple, and basic device details (such as iOS version, App version and storefront country). Never your name, email,
+          location or payment details. Sent each time the App opens, whether or not you buy Pro, and used only
+          to show Pro's price and know whether Pro is unlocked.</td>
     </tr>
   </table>
 
@@ -174,7 +201,10 @@
     </li>
     <li>
       <strong>Booking and course links</strong> open the course's own website or its booking provider (for
-      example, a course's tee-time page) in your browser. We do not book tee times and receive nothing back.
+      example, a course's tee-time page) in a browser window inside the App, provided by Apple (Safari View
+      Controller). That window is Safari's, not ours: the App cannot see the pages you visit there, what you type,
+      or whether you booked. We do not book tee times and receive nothing back. When you close it, the App asks
+      whether you got a tee time, and saves only what you choose to enter (see section 4).
       Anything you enter there, including payment details, goes to that site under its terms and privacy policy,
       not ours.
     </li>
@@ -191,13 +221,27 @@
   <ul>
     <li>Your appearance setting (light, dark or system).</li>
     <li>A flag recording that you have seen the introduction, so it is not shown twice.</li>
-    <li>If you buy Pro, the anonymous purchase ID and a cached copy of whether Pro is unlocked, kept by our
-        purchase provider's library.</li>
+    <li>Tee times you choose to save: the course, day, time and number of players you enter after booking. They
+        are removed after the day of the round, or when you tap Remove.</li>
+    <li>Reminders for those tee times, if you allow notifications: one the evening before and one two hours before.
+        They are scheduled by your phone's own notification system, contain only the course, time and number of
+        players, and are never sent from or through a server. We have no push notification service and no device
+        token. You can turn them off in your phone's Settings at any time.</li>
+    <li>If you tap Share on a saved tee time, the App hands its course, day, time, number of players and a map
+        link to your phone's own share screen or its New Event calendar screen. You choose where it goes and
+        whether to save it; the App never sends it anywhere itself and never reads your calendar.</li>
+    <li>The anonymous purchase ID and a cached copy of whether Pro is unlocked, kept by our purchase
+        provider's library.</li>
+    <li>Your plan, so it is ready the next time you open the App: where you are staying (one of the App's
+        areas, a place you typed, or simply that you chose "My location"), number of players, 18 or 9 holes,
+        budget, the things you said you'd like, and the golf resort you are staying at, if any. The day and the
+        tee time are never kept. When you chose "My location", your position is not stored; the App asks your
+        phone for it again when it opens, and only if you have already allowed location. You can erase the
+        saved plan at any time with "Clear my saved plan" in Settings.</li>
   </ul>
 
   <p>
-    Your plan (the day, starting area, party size, budget and the other choices on the Find screen) is held only
-    while the App is open and is not saved. None of this is transmitted anywhere. It is readable only by the App,
+    None of this is transmitted anywhere, except as described above for drive times. It is readable only by the App,
     and <strong>deleting the App deletes all of it</strong>. That is the complete data deletion procedure; there
     is nothing on our side to request the deletion of.
   </p>
@@ -252,9 +296,22 @@
   <h2>9. Changes to This Policy</h2>
 
   <p>
-    If the App gains a feature that changes any of the above &mdash; live tee-time availability from a booking
-    partner, or anything else that sends information to a server of ours or anyone else's &mdash; this policy will be updated <strong>before</strong> that version is released, the "Last
+    If the App gains a feature that changes any of the above &mdash; real driving times, live tee-time
+    availability from a booking partner, a purchase, or anything that sends information to a server of ours or
+    anyone else's &mdash; this policy will be updated <strong>before</strong> that version is released, the "Last
     Updated" date will change, and the change will be described here rather than silently absorbed.
+  </p>
+  <p>
+    <strong>October 7, 2026:</strong> sections 1 and 3 now say that RevenueCat also receives your device's
+    identifier for our apps (Apple's Identifier for Vendor, IDFV), which its library sends with every request.
+    The earlier text said we had no way to identify your device. Nothing new is collected; the description is
+    now accurate.
+  </p>
+  <p>
+    <strong>September 30, 2026:</strong> sections 3 and 4 and the short version now say that the App checks
+    with our purchase provider, RevenueCat, each time it opens, using a random, anonymous ID, to show Pro's
+    price and whether Pro is unlocked. The earlier text said this happened only if you bought Pro. Nothing
+    new is collected; the description is now accurate.
   </p>
 
   <h2>10. Contact Us</h2>

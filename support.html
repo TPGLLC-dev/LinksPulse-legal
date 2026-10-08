@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+  Reviewed against the app 2026-09-27. Modeled on BeachPulse's support
+  page (DisneyWait legal/beachpulse/support.html @ f8983be). App Store Connect
+  requires a Support URL; this is it once hosted.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -15,43 +20,136 @@
     }
     h1 { font-size: 1.8rem; color: #111827; margin-bottom: 4px; }
     h2 { font-size: 1.1rem; color: #111827; margin-top: 32px; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; }
+    h3 { font-size: 1rem; color: #111827; margin: 22px 0 4px; }
     p, li { color: #374151; font-size: 0.95rem; }
-    ul { padding-left: 20px; }
     a { color: #1f6f43; }
     .meta { color: #6b7280; font-size: 0.875rem; margin-bottom: 28px; }
+    .callout { background: #eef6f0; border-left: 4px solid #1f6f43; padding: 12px 16px; margin: 18px 0; }
   </style>
 </head>
 <body>
 
   <h1>LinksPulse &mdash; Support</h1>
-  <p class="meta">Need help with LinksPulse? Start here.</p>
+  <p class="meta">Where and when to play golf in Central Florida, and why.</p>
 
-  <h2>Contact Us</h2>
+  <div class="callout">
+    <p style="margin:0">
+      <strong>Email us:</strong> <a href="mailto:TPGLLC.Support@gmail.com">TPGLLC.Support@gmail.com</a><br />
+      We read every message. Please tell us which course and which day you were looking at, and include a
+      screenshot if you can.
+    </p>
+  </div>
+
+  <h2>Found something wrong?</h2>
+
   <p>
-    Email: <a href="mailto:TPGLLC.Support@gmail.com">TPGLLC.Support@gmail.com</a><br />
-    We aim to respond within 1&ndash;2 business days.
+    Corrections are the most useful thing you can send. Green fees, cart and walking rules, hours and who may
+    play change often, and a golfer who was just there knows before we do. If a course's details, photo or
+    location are wrong, tell us what you saw and we will fix it in the next version.
   </p>
 
   <h2>Frequently Asked Questions</h2>
-  <ul>
-    <li><strong>Can I book a tee time in the App?</strong> No. LinksPulse recommends a course and sends you to that course's own booking page. It doesn't show live tee-time availability yet.</li>
-    <li><strong>Why does a course say to confirm the green fee or rules?</strong> Fees, cart and walking rules, dress codes and hours change without notice. The App marks anything it hasn't confirmed, so check with the course before you rely on it.</li>
-    <li><strong>Why can't I see a certain course?</strong> Some courses, such as Bay Hill and Reunion, only take their own resort's guests. LinksPulse hides them unless you say you're staying there.</li>
-    <li><strong>Do I have to share my location?</strong> No. You can pick a starting area or type a hotel or address instead. If you do share it, it's rounded to about 100 meters and used only to work out drive times. See the <a href="privacy.html">Privacy Policy</a>.</li>
-    <li><strong>Drive times look off.</strong> Today's drive times use live traffic, and later days use usual traffic for the time you'd leave. Check that you have a network connection and that your starting point is right.</li>
-    <li><strong>I bought Pro but it's not unlocked.</strong> Open the Pro screen and tap <em>Restore Purchases</em>. Pro is tied to your Apple ID, so use the same one you bought it with.</li>
-    <li><strong>How do I get a refund?</strong> Apple processes all purchases. Request a refund at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</li>
-    <li><strong>How do I delete my data?</strong> LinksPulse has no accounts and keeps nothing about you on our side. Deleting the App removes everything it stored on your phone.</li>
-  </ul>
 
-  <h2>Other Links</h2>
-  <ul>
-    <li><a href="./">LinksPulse home</a></li>
-    <li><a href="privacy.html">Privacy Policy</a></li>
-    <li><a href="terms.html">Terms of Use</a></li>
-  </ul>
+  <h3>Does LinksPulse book tee times?</h3>
+  <p>
+    No. LinksPulse recommends where and when to play. The booking link on each course opens that course's own
+    booking page, and your booking is with them. We cannot see open tee times, change a booking or issue a
+    refund.
+  </p>
 
-  <p class="meta">LinksPulse is independent and is not affiliated with, endorsed by, or sponsored by any golf course, resort, club or booking service it describes, or by the National Weather Service.</p>
+  <h3>Why isn't a course I know listed?</h3>
+  <p>
+    LinksPulse covers a curated set of Central Florida courses, and we add a course only once we can describe it
+    accurately. Email us the name and we will look at it.
+  </p>
+
+  <h3>Why is a course under "Not ranked for this plan"?</h3>
+  <p>
+    Something about your plan rules it out on that day: for example, it is closed, or we have not been able to
+    confirm its location. The line under its name says which. Tap it to see the course anyway.
+  </p>
+
+  <h3>Why are some courses hidden?</h3>
+  <p>
+    A few courses are open only to guests of a particular resort. If you are not staying there, you cannot book
+    them, so they are left out of your results. Choose where you are staying in your plan and they will appear.
+    They are always on the Courses tab and the map.
+  </p>
+
+  <h3>What does "Too close to call" mean?</h3>
+  <p>
+    On what we can see, the top courses are as good as each other. What would really separate them is open tee
+    times and today's green fee, and we usually cannot see either. Rather than pretend one wins, we say so: book
+    whichever has a tee time that suits you.
+  </p>
+
+  <h3>Why does something say "not measured" or "unknown"?</h3>
+  <p>
+    Because we do not know it. When a forecast cannot be fetched or a fact about a course has not been
+    confirmed, LinksPulse says so instead of guessing, and it does not count what it does not know for or
+    against a course.
+  </p>
+
+  <h3>How is the drive time worked out?</h3>
+  <p>
+    From TomTom's traffic data. For today with no tee time set, it is traffic right now. For a tee time, or
+    another day, it is the usual traffic for leaving an hour before your tee time (7 AM if you have not picked
+    one), labeled "usual traffic" because nobody can see a future accident. If drive times cannot load, the App
+    says so and shows straight-line miles instead, labeled "straight line".
+  </p>
+
+  <h3>Does LinksPulse need my location?</h3>
+  <p>
+    No. You can choose a starting area or type a place instead. If you do use your location, it is read once,
+    only while the App is open, rounded to about 100 meters and sent to our routing service to work out drive
+    times, with nothing that identifies you. See our <a href="privacy.html">Privacy Policy</a>.
+  </p>
+
+  <h3>Is the weather a lightning warning?</h3>
+  <p>
+    No. The weather in LinksPulse is a forecast to help you choose a day and time. It is not a safety service.
+    On the course, follow the course's lightning warning and staff, and if you hear thunder, stop play and get
+    to shelter.
+  </p>
+
+  <h3>How do I delete my data?</h3>
+  <p>
+    Delete the App. LinksPulse has no accounts and sends nothing about you to us, so everything it keeps is on
+    your phone and goes with it.
+  </p>
+
+  <h3>What is LinksPulse Pro?</h3>
+  <p>
+    A one-time $6.99 purchase (price may vary by country) that lets you plan any of the next seven days instead
+    of just today and tomorrow. There is no subscription and nothing renews. Every course, the reasons behind
+    every ranking and all weather alerts stay free.
+  </p>
+
+  <h3>I bought Pro. How do I get it back on a new phone?</h3>
+  <p>
+    Open <em>You &rsaquo; See what's in Pro</em> and tap <em>Restore Purchases</em>, signed in with the same Apple
+    ID you bought it with. There is no LinksPulse account to sign in to.
+  </p>
+
+  <h3>How do I get a refund?</h3>
+  <p>
+    Apple handles all payments, so refunds are requested from Apple at
+    <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.
+  </p>
+
+  <h3>Where do the photos come from?</h3>
+  <p>
+    Course photos are used under Creative Commons licenses; aerial images are public-domain U.S. Government
+    surveys and may be a few years old. A course without a verified photo of that course shows an illustration instead, never a picture of somewhere else. Every image is credited in the App under
+    <em>You &rsaquo; Photo credits &amp; data sources</em>.
+  </p>
+
+  <p class="meta" style="margin-top:36px">
+    <a href="privacy.html">Privacy Policy</a> &nbsp;&bull;&nbsp; <a href="terms.html">Terms of Use</a><br />
+    LinksPulse is independent and is not affiliated with, endorsed by, or sponsored by any golf course, resort,
+    club or booking service it describes, or by the National Weather Service.
+    &copy; 2026 The Penelope Group LLC.
+  </p>
 
 </body>
 </html>
